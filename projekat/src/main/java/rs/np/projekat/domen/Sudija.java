@@ -157,6 +157,19 @@ public class Sudija {
 	public String toString() {
 		return "Sudija [id=" + id + ", ime=" + ime + ", prezime=" + prezime + "]";
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * Postavlja id sudije.
+	 * 
+	 * @param id
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	
 }
