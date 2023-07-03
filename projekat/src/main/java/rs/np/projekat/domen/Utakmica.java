@@ -3,6 +3,16 @@ package rs.np.projekat.domen;
 /**
  * Klasa utakmica predstavlja apstrakciju jedne utakmice izmedju 2 kluba.
  * 
+ *  Atributi:
+ * 	<ul>
+ * 		<li>idH: Integer</li>
+ *		<li>idA: Integer</li>
+ *		<li>golH: Integer</li>
+ *		<li>golA: Integer</li>
+ *		<li>stadion: Integer</li>
+ *		<li>sudija: Integer</li>
+ * 	</ul>
+ * 
  * @author mijov
  */
 public class Utakmica {
