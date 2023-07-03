@@ -3,6 +3,18 @@ package rs.np.projekat.domen;
 /**
  * Klasa Klub predstavlja jedan klub koji moze da odigra utakmicu i ima svoje igrace.
  * 
+ *  Atributi:
+ * 	<ul>
+ * 		<li>id: Integer</li>
+ * 		<li>naziv: String</li>
+ * 		<li>brojW: Integer</li>
+ * 		<li>brojL: Integer</li>
+ * 		<li>brojD: Integer</li>
+ * 		<li>stadion: Integer</li>
+ * 		<li>drzava: Integer</li>
+ * 		<li>trener: Integer</li>
+ * 	</ul>
+ * 
  * @author mijov
  */
 public class Klub {
