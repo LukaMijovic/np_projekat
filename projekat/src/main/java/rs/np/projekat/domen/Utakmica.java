@@ -26,6 +26,16 @@ public class Utakmica {
 	 * Broj golova datih od strane gosta.
 	 */
 	private int golA;
+	
+	/**
+	 * Id stadiona na kom se igra utakmica.
+	 */
+	private int stadion;
+	
+	/**
+	 * Id sudije koji je sudio utakmicu.
+	 */
+	private int sudija;
 
 	public Utakmica() {
 		super();
@@ -120,6 +130,50 @@ public class Utakmica {
 			throw new IllegalArgumentException("Broj golova ne moze biti negativan.");
 		}
 		this.golA = golA;
+	}
+
+	/**
+	 * Vraca id stadiona na kom se igra utakmica
+	 * 
+	 * @return
+	 */
+	public int getStadion() {
+		return stadion;
+	}
+
+	/**
+	 * Postavlja id stadiona na kom se igra utakmica.
+	 * 
+	 * @param stadion
+	 */
+	public void setStadion(int stadion) throws IllegalArgumentException {
+		if (stadion < 0) {
+			throw new IllegalArgumentException("Id stadiona ne moze biti negativan.");
+		}
+		
+		this.stadion = stadion;
+	}
+
+	/**
+	 * Vraca id sudije koji je sudio utakmicu.
+	 * 
+	 * @return sudija : Integer.
+	 */
+	public int getSudija() {
+		return sudija;
+	}
+
+	/**
+	 * Postavlja id sudije koji sudi utakmicu.
+	 * 
+	 * @param sudija
+	 */
+	public void setSudija(int sudija) throws IllegalArgumentException {
+		if (sudija < 0) {
+			throw new IllegalArgumentException("Id sudije ne moze biti negativan.");
+		}
+		
+		this.sudija = sudija;
 	}
 	
 }
