@@ -33,6 +33,28 @@ public class DBBroker {
     private Connection conn;
     
     /**
+     * Instanca DBBrokera kao singlton patern.
+     */
+    private static DBBroker instanca;
+    
+    private DBBroker() {
+    	
+    }
+    
+    /**
+     * Vraca instancu DBBrokera.
+     * 
+     * @return
+     */
+    public static DBBroker getDBBroker() {
+    	if (instanca == null) {
+    		instanca = new DBBroker();
+    	}
+    	
+    	return instanca;
+    }
+    
+    /**
      * Uspostavlja konekciju sa bazom.
      * 
      * @throws SQLException kada nije uspesno povezivanje sa bazom.
@@ -72,7 +94,7 @@ public class DBBroker {
      * Metoda salje bazi podatke sudije i pronalazi sudiju sa prosledjenim mejlom i sifrom kako bi sudija mogao da se prijavi na sistem.
      * 
      * @param pomocni
-     * @return sudiju koji ima prosledjen mejl i sifru.
+     * @return sudiju koji ima prosledjen mejl i sifru ili null ako ga nije pronasao.
      */
     public Sudija prijavi(Sudija pomocni) {
     	
@@ -109,5 +131,43 @@ public class DBBroker {
     	
     	return sudija;
     }
+
+    /**
+     * Vraca instancu konekcije.
+     * 
+     * @return
+     */
+	public Connection getConn() {
+		return conn;
+	}
+
+	/**
+	 * Registruje novog sudiju.
+	 * 
+	 * @param sudija
+	 * @return
+	 */
+	public boolean registracija(Sudija sudija) {
+		boolean flag = false;
+		
+		String query = String.format("INSERT INTO sudija (ime, prezime, email, sifra) VALUES ('%s', '%s', '%s', '%s')", sudija.getIme(), sudija.getPrezime(), sudija.getEmail(), sudija.getSifra());
+		System.out.println(query);
+
+		Statement stat;
+		try {
+			stat = conn.createStatement();
+			int result = stat.executeUpdate(query);
+			
+			if (result != 0) {
+				flag = true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return flag;
+	}
 	
 }
