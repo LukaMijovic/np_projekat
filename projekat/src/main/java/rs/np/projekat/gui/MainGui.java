@@ -19,6 +19,9 @@ import java.awt.Font;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
 import net.miginfocom.swing.MigLayout;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * Main GUI stranica iz koje se pokrecu sve ostale sistemske operacije.
@@ -39,6 +42,7 @@ public class MainGui extends JFrame {
 	 */
 	private UtakmicaModelTable model;
 	private JTable table;
+	private JButton btnNoviFudbaler;
 	
 	
 	/**
@@ -71,6 +75,7 @@ public class MainGui extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.add(getTable());
+		contentPane.add(getBtnNoviFudbaler());
 		initTableUtakmice(null);
 	}
 	
@@ -97,5 +102,19 @@ public class MainGui extends JFrame {
 			table.setBounds(10, 10, 540, 145);
 		}
 		return table;
+	}
+	private JButton getBtnNoviFudbaler() {
+		if (btnNoviFudbaler == null) {
+			btnNoviFudbaler = new JButton("Novi fudbaler");
+			btnNoviFudbaler.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					FudbalerForma gui = new FudbalerForma();
+					gui.setVisible(true);
+				}
+			});
+			btnNoviFudbaler.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			btnNoviFudbaler.setBounds(10, 339, 138, 21);
+		}
+		return btnNoviFudbaler;
 	}
 }

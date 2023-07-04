@@ -59,4 +59,13 @@ public class Pozicija {
 		this.naziv = naziv;
 	}
 
+	/**
+	 * Vraca string atrubita (naziv).
+	 */
+	@Override
+	public String toString() {
+		return naziv;
+	}
+
+	
 }

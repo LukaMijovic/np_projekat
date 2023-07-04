@@ -58,5 +58,14 @@ public class Drzava {
 	public void setNaziv(String naziv) {
 		this.naziv = naziv;
 	}
+
+	/**
+	 * Vraca string sa nazivom drzave.
+	 */
+	@Override
+	public String toString() {
+		return naziv;
+	}
+	
 	
 }

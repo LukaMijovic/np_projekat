@@ -244,11 +244,11 @@ public class Klub {
 	}
 
 	/**
-	 * Override toString metode klase Object tako sto vraca string od atributa naziv i drzava.
+	 * Override toString metode klase Object tako sto vraca string od atributa naziv.
 	 */
 	@Override
 	public String toString() {
-		return "Klub [naziv=" + naziv + ", drzava=" + drzava + "]";
+		return naziv;
 	}
 	
 	

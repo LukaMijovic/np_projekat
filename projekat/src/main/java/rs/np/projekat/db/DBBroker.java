@@ -5,10 +5,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import rs.np.projekat.domen.Drzava;
+import rs.np.projekat.domen.Klub;
+import rs.np.projekat.domen.Pozicija;
 import rs.np.projekat.domen.Sudija;
 import rs.np.projekat.domen.Utakmica;
 
@@ -264,6 +268,111 @@ public class DBBroker {
 	
 		return rezultati;
 		
+	}
+
+	/**
+	 * Vraca drzave iz baze podataka
+	 * 
+	 * @return drzave kao listu Drzava.
+	 */
+	public List<Drzava> vratiDrzave() {
+		List<Drzava> drzave = new ArrayList<>();
+		
+		String query = "SELECT * FROM drzava";
+		
+		try {
+			Statement stat = conn.createStatement();
+			
+			ResultSet rs = stat.executeQuery(query);
+			
+			if (rs != null) {
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					String naziv = rs.getString("naziv");
+					
+					Drzava pomocna = new Drzava(id, naziv);
+					System.out.println(pomocna);
+					drzave.add(pomocna);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return drzave;
+	}
+
+	/**
+	 * Vraca sve moguce pozicije igraca na terenu.
+	 * 
+	 * @return pozicije kao lista pozicija.
+	 */
+	public List<Pozicija> vratiPozicije() {
+		// TODO Auto-generated method stub
+		List<Pozicija> pozicije = new ArrayList<>();
+		
+		String query = "SELECT * FROM pozicija";
+		
+		try {
+			Statement stat = conn.createStatement();
+			
+			ResultSet rs = stat.executeQuery(query);
+			
+			if (rs != null) {
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					String naziv = rs.getString("naziv");
+					
+					Pozicija pomocna = new Pozicija(id, naziv);
+					System.out.println(pomocna);
+					pozicije.add(pomocna);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return pozicije;
+	}
+
+	
+	/**
+	 * Vraca dostupne klubove.
+	 * 
+	 * @return klubove kao listu Klubova.
+	 */
+	public List<Klub> vratiKlubove() {
+		List<Klub> klubovi = new ArrayList<>();
+		
+		String query = "SELECT * FROM klub";
+		
+		try {
+			Statement stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(query);
+			
+			if (rs != null) {
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					int brojW = rs.getInt("brojW");
+					int brojL = rs.getInt("brojL");
+					int brojD = rs.getInt("brojD");
+					String naziv = rs.getString("naziv");
+					int stadion = rs.getInt("stadion");
+					int trener = rs.getInt("trener");
+					int drzava = rs.getInt("drzava");
+					
+					Klub klub = new Klub(id, naziv, brojW, brojL, brojD, stadion, trener, drzava);
+					klubovi.add(klub);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return klubovi;
 	}
 	
 }

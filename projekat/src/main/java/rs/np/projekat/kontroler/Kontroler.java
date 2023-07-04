@@ -1,11 +1,15 @@
 package rs.np.projekat.kontroler;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 import rs.np.projekat.db.DBBroker;
+import rs.np.projekat.domen.Drzava;
+import rs.np.projekat.domen.Klub;
+import rs.np.projekat.domen.Pozicija;
 import rs.np.projekat.domen.Sudija;
 import rs.np.projekat.domen.Utakmica;
 
@@ -158,5 +162,74 @@ public class Kontroler {
 		}
 		
 		return rezultati;
+	}
+
+	/**
+	 * Vraca sve drzave iz baze podataka.
+	 * 
+	 * @return drzave kao listu Drzava.
+	 */
+	public List<Drzava> vratiDrzave() {
+		// TODO Auto-generated method stub
+		List<Drzava> drzave = new ArrayList<>();
+		
+		db = DBBroker.getDBBroker();
+		
+		try {
+			db.uspostaviKonekciju();
+			
+			drzave = db.vratiDrzave();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return drzave;
+	}
+
+	/**
+	 * Vraca sve pozicije koje igrac moze zauzeti na terenu.
+	 * 
+	 * @return pozicije kao listu Pozicija.
+	 */
+	public List<Pozicija> vratiPozicije() {
+		// TODO Auto-generated method stub
+		List<Pozicija> pozicije = new ArrayList<>();
+		
+		db = DBBroker.getDBBroker();
+		
+		try {
+			db.uspostaviKonekciju();
+			
+			pozicije = db.vratiPozicije();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return pozicije;
+	}
+
+	/**
+	 * Vraca dostupne klubove u kojima igrac moze potencijano igrati.
+	 * 
+	 * @return klubovi kao lista Klubova.
+	 */
+	public List<Klub> vratiKlubove() {
+		// TODO Auto-generated method stub
+		List<Klub> klubovi = new ArrayList<>();
+		
+		db = DBBroker.getDBBroker();
+		
+		try {
+			db.uspostaviKonekciju();
+			
+			klubovi = db.vratiKlubove();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return klubovi;
 	}
 }
