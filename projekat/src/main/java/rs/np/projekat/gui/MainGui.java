@@ -27,6 +27,8 @@ import net.miginfocom.swing.MigLayout;
  */
 public class MainGui extends JFrame {
 
+	private JPanel contentPane;
+	
 	/**
 	 * Kontroler koji spaja gui sa bazom podataka.
 	 */
@@ -36,6 +38,7 @@ public class MainGui extends JFrame {
 	 * Model tabele u koju ubacujemo rezultate utakmice.
 	 */
 	private UtakmicaModelTable model;
+	private JTable table;
 	
 	
 	/**
@@ -60,6 +63,14 @@ public class MainGui extends JFrame {
 	public MainGui() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 967, 553);
+		setBounds(100, 100, 574, 407);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().setLayout(null);
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		contentPane.add(getTable());
 		initTableUtakmice(null);
 	}
 	
@@ -77,5 +88,14 @@ public class MainGui extends JFrame {
 		
 		model.setRezultati(rezultati);
 		System.out.println(model.getRowCount() + " je trenutni broj redova");
+		table.setModel(model);
+	}
+	
+	private JTable getTable() {
+		if (table == null) {
+			table = new JTable();
+			table.setBounds(10, 10, 540, 145);
+		}
+		return table;
 	}
 }
