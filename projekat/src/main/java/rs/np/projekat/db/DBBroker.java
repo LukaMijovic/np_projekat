@@ -5,8 +5,12 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 import rs.np.projekat.domen.Sudija;
+import rs.np.projekat.domen.Utakmica;
 
 /**
  * Klasa DBBroker uspostavlja konekciju sa bazom podataka.
@@ -168,6 +172,98 @@ public class DBBroker {
 		
 		
 		return flag;
+	}
+	
+
+	/**
+	 * Vraca nazive timova na osnovu njihovih id.
+	 * 
+	 * @param idH
+	 * @param idA
+	 * @return niz naziva timova kao Stringove.
+	 */
+	public String[] vratiTimove(int idH, int idA) {
+		
+		String[] timovi = {"/", "/"};
+		
+		String query = String.format("SELECT naziv FROM klub WHERE id = '%s' OR id = '%s'", idH, idA);
+		System.out.println(query);
+		
+		try {
+			Statement stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(query);
+			
+			if (rs != null) {
+				
+				int count = 0;
+				
+				while (rs.next()) {
+					timovi[count++] = rs.getString("naziv");
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return timovi;
+		
+	}
+
+	/**
+	 * Vraca rezultate utakmica po zadatom kriterijumu.
+	 * 
+	 * @param kriterijum
+	 * @return rezultate utakmica kao lista utakmica.
+	 */
+	public List<Utakmica> vratiRezultate(HashMap<String, String> kriterijum) {
+		
+		String query = "SELECT * FROM utakmica";
+		
+//		
+//		if (kriterijum.get("idH") != null) {
+//			query += " idH = " + kriterijum.get("idH") + " AND";
+//		}
+//		if (kriterijum.get("idA") != null) {
+//			query += " idA = " + kriterijum.get("idA");
+//		}
+		
+		System.out.println(query);
+		
+		List<Utakmica> rezultati = new LinkedList<>();
+		
+		try {
+			Statement stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(query);
+			
+			if (rs != null) {
+				while (rs.next()) {
+					int idH = rs.getInt("idH");
+					int idA = rs.getInt("idA");
+					int sudija = rs.getInt("sudija");
+					int golH = rs.getInt("golH");
+					int golA = rs.getInt("golA");
+					int stadion = rs.getInt("stadion");
+					
+					Utakmica u = new Utakmica();
+					u.setIdH(idH);
+					u.setIdA(idA);
+					u.setGolA(golA);
+					u.setGolH(golH);
+					u.setStadion(stadion);
+					u.setSudija(sudija);
+					
+					System.out.println(u);
+					rezultati.add(u);
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		return rezultati;
+		
 	}
 	
 }

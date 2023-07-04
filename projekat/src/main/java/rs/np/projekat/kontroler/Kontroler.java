@@ -1,9 +1,13 @@
 package rs.np.projekat.kontroler;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 import rs.np.projekat.db.DBBroker;
 import rs.np.projekat.domen.Sudija;
+import rs.np.projekat.domen.Utakmica;
 
 /**
  * Klasa Kontroler sadrzi svu logiku povezivanja GUI sa DBBrokerom.
@@ -16,6 +20,11 @@ public class Kontroler {
 	 * Instanca kontrolera kao singleton patern.
 	 */
 	private static Kontroler instanca;
+	
+	/**
+	 * Id sudije koji je ulogovan.
+	 */
+	private int ulogovaniSudija;
 	
 	/**
 	 * Instanca DBBrokera kako bi Kontroler komunicirao sa bazom.
@@ -69,6 +78,8 @@ public class Kontroler {
 			e.printStackTrace();
 		}
 		
+		ulogovaniSudija = sudija.getId();
+		
 		return sudija;
 		//return flagUspeh;
 	}
@@ -99,5 +110,53 @@ public class Kontroler {
 		
 		
 		return flag;
+	}
+
+	/**
+	 * Vraca nazive timova na osnovu id.
+	 * 
+	 * @param idH
+	 * @param idA
+	 * @return nazive timova kao Stringove.
+	 */
+	public String[] vratiTimove(int idH, int idA) {
+		String[] timovi = {};
+		
+		this.db = DBBroker.getDBBroker();
+		try {
+			this.db.uspostaviKonekciju();
+			
+			timovi = db.vratiTimove(idH, idA);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		
+		
+		return timovi;
+	}
+
+	/**
+	 * Vraca rezultate svih utakmica sa prosledjenim kriterijumom.
+	 * 
+	 * @param kriterijum
+	 * @return rezultati utakmica kao lista utakmica.
+	 */
+	public List<Utakmica> vratiRezultate(HashMap<String, String> kriterijum) {
+		List<Utakmica> rezultati = new LinkedList<>();
+		
+		this.db = DBBroker.getDBBroker();
+		
+		try {
+			this.db.uspostaviKonekciju();
+			
+			rezultati = db.vratiRezultate(kriterijum);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rezultati;
 	}
 }

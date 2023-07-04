@@ -133,7 +133,8 @@ public class PrijavaGui extends JFrame {
 						JOptionPane.showMessageDialog(rootPane, "Uspesna prijava " + sudija.getIme());
 						setVisible(false);
 						
-						//main page.
+						MainGui mainGui = new MainGui();
+						mainGui.setVisible(true);
 						
 					} else {
 						JOptionPane.showMessageDialog(rootPane, "Neuspesna prijava");

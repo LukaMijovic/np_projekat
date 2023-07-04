@@ -170,9 +170,11 @@ public class RegistracijaGui extends JFrame {
 					boolean flag = kontroler.registracija(sudija);
 					
 					if (flag) {
-						JOptionPane.showMessageDialog(parent, "Uspesna registracija. Molimo da se prijavite");
+						JOptionPane.showMessageDialog(rootPane, "Uspesna registracija. Molimo da se prijavite");
 						setVisible(false);
 						dispose();
+					} else {
+						JOptionPane.showMessageDialog(rootPane, "Nazalost registacija nije uspela. Molimo probajte ponovo.");
 					}
 					
 					

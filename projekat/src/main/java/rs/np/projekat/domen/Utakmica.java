@@ -185,5 +185,13 @@ public class Utakmica {
 		
 		this.sudija = sudija;
 	}
+
+	/**
+	 * Vraca atribute utakmice kao string.
+	 */
+	@Override
+	public String toString() {
+		return "Utakmica [idH=" + idH + ", idA=" + idA + ", golH=" + golH + ", golA=" + golA + "]";
+	}
 	
 }
