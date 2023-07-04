@@ -15,6 +15,10 @@ import rs.np.projekat.model.UtakmicaModelTable;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JScrollPane;
+import java.awt.FlowLayout;
+import net.miginfocom.swing.MigLayout;
 
 /**
  * Main GUI stranica iz koje se pokrecu sve ostale sistemske operacije.
@@ -23,13 +27,10 @@ import java.awt.Color;
  */
 public class MainGui extends JFrame {
 
-	private JPanel contentPane;
-
 	/**
 	 * Kontroler koji spaja gui sa bazom podataka.
 	 */
 	private Kontroler kontroler;
-	private JTable table;
 	
 	/**
 	 * Model tabele u koju ubacujemo rezultate utakmice.
@@ -59,21 +60,7 @@ public class MainGui extends JFrame {
 	public MainGui() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 967, 553);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		contentPane.add(getTable());
 		initTableUtakmice(null);
-	}
-	private JTable getTable() {
-		if (table == null) {
-			table = new JTable();
-			table.setBorder(new LineBorder(new Color(0, 0, 0)));
-			table.setBounds(10, 286, 473, -275);
-		}
-		return table;
 	}
 	
 	/**
@@ -90,8 +77,5 @@ public class MainGui extends JFrame {
 		
 		model.setRezultati(rezultati);
 		System.out.println(model.getRowCount() + " je trenutni broj redova");
-		
-		table.setModel(model);
-		table.setVisible(true);
 	}
 }
