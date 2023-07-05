@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import rs.np.projekat.domen.Drzava;
+import rs.np.projekat.domen.Fudbaler;
 import rs.np.projekat.domen.Klub;
 import rs.np.projekat.domen.Pozicija;
 import rs.np.projekat.domen.Sudija;
@@ -373,6 +374,40 @@ public class DBBroker {
 		}
 		
 		return klubovi;
+	}
+
+	/**
+	 * Unosi fudbalera u bazu podataka.
+	 * 
+	 * @param fudbaler
+	 * @return true ako je uspesno fudbaler unet, false ako nije.
+	 */
+	public boolean unesiFudbalera(Fudbaler fudbaler) {
+		boolean flag = false;
+		
+		String query = String.format("INSERT INTO fudbaler (ime, prezime, brojNaDresu, pozicija, drzava, klub) VALUES ('%s', '%s', '%d', '%d', '%d', '%d')", 
+										fudbaler.getIme(), 
+										fudbaler.getPrezime(), 
+										fudbaler.getBrojNaDresu(), 
+										fudbaler.getPozicija(), 
+										fudbaler.getDrzava(), 
+										fudbaler.getKlub()
+									);
+		System.out.println(query);
+		
+		try {
+			Statement stat = conn.createStatement();
+			int result = stat.executeUpdate(query);
+			
+			if (result != 0) {
+				flag = true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return flag;
 	}
 	
 }

@@ -7,12 +7,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import rs.np.projekat.domen.Drzava;
+import rs.np.projekat.domen.Fudbaler;
 import rs.np.projekat.domen.Klub;
 import rs.np.projekat.domen.Pozicija;
 import rs.np.projekat.kontroler.Kontroler;
 import rs.np.projekat.model.DrzavaModelComboBox;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.util.List;
 
@@ -21,6 +24,8 @@ import javax.swing.JSpinner;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * Graficka forma za unos novog fudbalera.
@@ -201,6 +206,34 @@ public class FudbalerForma extends JFrame {
 	private JButton getBtnNewButton() {
 		if (btnNewButton == null) {
 			btnNewButton = new JButton("Potvrdi");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String ime = textFieldIme.getText();
+					String prezime = textFieldPrezime.getText();
+					int brojNaDresu = (int) spinnerBrojNaDresu.getValue();
+					int pozicija = comboBoxPozicija.getSelectedIndex();
+					int drzava = comboBoxDrzava.getSelectedIndex();
+					int klub = comboBoxKlub.getSelectedIndex();
+					
+					Fudbaler fudbaler = new Fudbaler();
+					fudbaler.setBrojNaDresu(brojNaDresu);
+					fudbaler.setDrzava(drzava + 1);
+					fudbaler.setIme(ime);
+					fudbaler.setKlub(klub + 1);
+					fudbaler.setPozicija(pozicija + 1);
+					fudbaler.setPrezime(prezime);
+					
+					boolean flag = kontroler.getKontroler().unesiFudbalera(fudbaler);
+					
+					if (flag) {
+						JOptionPane.showMessageDialog(rootPane, "Uspeno unet fudbaler!");
+						setVisible(false);
+						dispose();
+					} else {
+						JOptionPane.showMessageDialog(rootPane, "Nesto ste pogresili, fudbaler nije unet. Molimo probajte ponovo.");
+					}
+				}
+			});
 			btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			btnNewButton.setBounds(268, 416, 158, 21);
 		}

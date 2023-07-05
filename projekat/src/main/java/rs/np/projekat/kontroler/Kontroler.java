@@ -8,6 +8,7 @@ import java.util.List;
 
 import rs.np.projekat.db.DBBroker;
 import rs.np.projekat.domen.Drzava;
+import rs.np.projekat.domen.Fudbaler;
 import rs.np.projekat.domen.Klub;
 import rs.np.projekat.domen.Pozicija;
 import rs.np.projekat.domen.Sudija;
@@ -231,5 +232,26 @@ public class Kontroler {
 		}
 		
 		return klubovi;
+	}
+
+	/**
+	 * Unosi novog fudbalera.
+	 * 
+	 * @param fudbaler
+	 * @return true ako je uspesno unet ili false ako nije.
+	 */
+	public boolean unesiFudbalera(Fudbaler fudbaler) {
+		boolean flag = false;
+		
+		db = DBBroker.getDBBroker();
+		try {
+			db.uspostaviKonekciju();
+			flag = db.unesiFudbalera(fudbaler);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return flag;
 	}
 }
