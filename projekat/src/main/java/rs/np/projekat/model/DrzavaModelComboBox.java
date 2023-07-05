@@ -12,6 +12,7 @@ import rs.np.projekat.domen.Drzava;
  * 
  * @author mijov
  */
+@Deprecated
 public class DrzavaModelComboBox extends DefaultComboBoxModel<String>{
 
 	/**

@@ -37,10 +37,10 @@ public class Utakmica {
 	 */
 	private int golA;
 	
-	/**
-	 * Id stadiona na kom se igra utakmica.
-	 */
-	private int stadion;
+//	/**
+//	 * Id stadiona na kom se igra utakmica.
+//	 */
+//	private int stadion;
 	
 	/**
 	 * Id sudije koji je sudio utakmicu.
@@ -142,27 +142,27 @@ public class Utakmica {
 		this.golA = golA;
 	}
 
-	/**
-	 * Vraca id stadiona na kom se igra utakmica
-	 * 
-	 * @return
-	 */
-	public int getStadion() {
-		return stadion;
-	}
+//	/**
+//	 * Vraca id stadiona na kom se igra utakmica
+//	 * 
+//	 * @return
+//	 */
+//	public int getStadion() {
+//		return stadion;
+//	}
 
-	/**
-	 * Postavlja id stadiona na kom se igra utakmica.
-	 * 
-	 * @param stadion
-	 */
-	public void setStadion(int stadion) throws IllegalArgumentException {
-		if (stadion < 0) {
-			throw new IllegalArgumentException("Id stadiona ne moze biti negativan.");
-		}
-		
-		this.stadion = stadion;
-	}
+//	/**
+//	 * Postavlja id stadiona na kom se igra utakmica.
+//	 * 
+//	 * @param stadion
+//	 */
+//	public void setStadion(int stadion) throws IllegalArgumentException {
+//		if (stadion < 0) {
+//			throw new IllegalArgumentException("Id stadiona ne moze biti negativan.");
+//		}
+//		
+//		this.stadion = stadion;
+//	}
 
 	/**
 	 * Vraca id sudije koji je sudio utakmicu.

@@ -191,21 +191,27 @@ public class DBBroker {
 		
 		String[] timovi = {"/", "/"};
 		
-		String query = String.format("SELECT naziv FROM klub WHERE id = '%s' OR id = '%s'", idH, idA);
-		System.out.println(query);
+		String queryH = String.format("SELECT naziv FROM klub WHERE id = '%s'", idH);
+		String queryA = String.format("SELECT naziv FROM klub WHERE id = '%s'", idA);
+		System.out.println(queryH);
+		System.out.println(queryA);
 		
 		try {
 			Statement stat = conn.createStatement();
-			ResultSet rs = stat.executeQuery(query);
+			ResultSet rsH = stat.executeQuery(queryH);
 			
-			if (rs != null) {
-				
-				int count = 0;
-				
-				while (rs.next()) {
-					timovi[count++] = rs.getString("naziv");
-				}
+			if (rsH != null) {
+				if (rsH.next())
+					timovi[0] = rsH.getString("naziv");
 			}
+			
+			ResultSet rsA = stat.executeQuery(queryA);
+			
+			if (rsA != null) {
+				if (rsA.next())
+					timovi[1] = rsA.getString("naziv");
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -248,14 +254,12 @@ public class DBBroker {
 					int sudija = rs.getInt("sudija");
 					int golH = rs.getInt("golH");
 					int golA = rs.getInt("golA");
-					int stadion = rs.getInt("stadion");
 					
 					Utakmica u = new Utakmica();
 					u.setIdH(idH);
 					u.setIdA(idA);
 					u.setGolA(golA);
 					u.setGolH(golH);
-					u.setStadion(stadion);
 					u.setSudija(sudija);
 					
 					System.out.println(u);
@@ -408,6 +412,95 @@ public class DBBroker {
 		}
 		
 		return flag;
+	}
+
+	/**
+	 * Unosi novu utakmicu u bazu podataka i azurira posledice te utakmice.
+	 * 
+	 * @param utakmica
+	 * @return true ako je uspesno ubacivanje u bazu ili false ako nije.
+	 */
+	public boolean unesiUtakmicu(Utakmica utakmica) {
+		boolean flag = false;
+		
+		String query = String.format("INSERT INTO utakmica (idH, idA, sudija, golH, golA) VALUES ('%d', '%d', '%d', '%d', '%d')", 
+										utakmica.getIdH(),
+										utakmica.getIdA(),
+										utakmica.getSudija(),
+										utakmica.getGolH(),
+										utakmica.getGolA()
+									);
+		System.out.println(query);
+		
+		try {
+			Statement stat = conn.createStatement();
+			int result = stat.executeUpdate(query);
+			
+			if (result != 0) {
+				flag = true;
+				
+				azurirajUspeh(utakmica.getIdH(), utakmica.getIdA(), utakmica.getGolH(), utakmica.getGolA());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return flag;
+	}
+
+	/**
+	 * Azurira pobede, poraze ili neresene rezultate klubova koji su odigrali utakmicu.
+	 * 
+	 * @param idH
+	 * @param idA
+	 * @param golH
+	 * @param golA
+	 */
+	private void azurirajUspeh(int idH, int idA, int golH, int golA) {
+		// TODO Auto-generated method stub
+		if (golH > golA) {
+			
+			String queryH = String.format("UPDATE klub SET brojW = brojW + 1 WHERE id = '%d'", idH);
+			String gueryA = String.format("UPDATE klub SET brojL = brojL + 1 WHERE id = '%d'", idA);
+			try {
+				Statement stat = conn.createStatement();
+				stat.executeUpdate(queryH);
+				stat.executeUpdate(gueryA);
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		} else if (golH == golA) {
+			String queryH = String.format("UPDATE klub SET brojD = brojD + 1 WHERE id = '%d'", idH);
+			String gueryA = String.format("UPDATE klub SET brojD = brojD + 1 WHERE id = '%d'", idA);
+			
+			try {
+				Statement stat = conn.createStatement();
+				stat.executeUpdate(queryH);
+				stat.executeUpdate(gueryA);
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			String queryH = String.format("UPDATE klub SET brojL = brojL + 1 WHERE id = '%d'", idH);
+			String gueryA = String.format("UPDATE klub SET brojW = brojW + 1 WHERE id = '%d'", idA);
+			
+			try {
+				Statement stat = conn.createStatement();
+				stat.executeUpdate(queryH);
+				stat.executeUpdate(gueryA);
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 }

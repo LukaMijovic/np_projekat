@@ -254,4 +254,43 @@ public class Kontroler {
 		
 		return flag;
 	}
+
+	/**
+	 * Vraca id sudije koji je trenutno ulogovan.
+	 * 
+	 * @return
+	 */
+	public int getUlogovaniSudija() {
+		return ulogovaniSudija;
+	}
+
+	/**
+	 * Postavlja integer koji predstavlja ulogovnaog sudije.
+	 * 
+	 * @param ulogovaniSudija
+	 */
+	public void setUlogovaniSudija(int ulogovaniSudija) {
+		this.ulogovaniSudija = ulogovaniSudija;
+	}
+
+	/**
+	 * Unosi prosledjenu utakmicu u bazu.
+	 * 
+	 * @param utakmica
+	 * @return true ako je uspesno unosenje ili false ako nije.
+	 */
+	public boolean unesiUtakmicu(Utakmica utakmica) {
+		boolean flag = false;
+		
+		db = DBBroker.getDBBroker();
+		try {
+			db.uspostaviKonekciju();
+			flag = db.unesiUtakmicu(utakmica);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return flag;
+	}
 }

@@ -43,7 +43,8 @@ public class MainGui extends JFrame {
 	private UtakmicaModelTable model;
 	private JTable table;
 	private JButton btnNoviFudbaler;
-	
+	private JButton btnUnosRezultata;
+	private MainGui self = this;
 	
 	/**
 	 * Launch the application.
@@ -76,6 +77,7 @@ public class MainGui extends JFrame {
 		contentPane.setLayout(null);
 		contentPane.add(getTable());
 		contentPane.add(getBtnNoviFudbaler());
+		contentPane.add(getBtnUnosRezultata());
 		initTableUtakmice(null);
 	}
 	
@@ -84,7 +86,7 @@ public class MainGui extends JFrame {
 	 * 
 	 * @param kriterijum
 	 */
-	private void initTableUtakmice(HashMap<String, String> kriterijum) {
+	public void initTableUtakmice(HashMap<String, String> kriterijum) {
 		
 		model = new UtakmicaModelTable();
 		System.out.println(model.getRowCount() + " je trenutni broj redova");
@@ -116,5 +118,20 @@ public class MainGui extends JFrame {
 			btnNoviFudbaler.setBounds(10, 339, 138, 21);
 		}
 		return btnNoviFudbaler;
+	}
+	private JButton getBtnUnosRezultata() {
+		if (btnUnosRezultata == null) {
+			btnUnosRezultata = new JButton("Unos rezultata");
+			btnUnosRezultata.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					UtakmicaForm gui = new UtakmicaForm(self);
+					gui.setVisible(true);
+					
+				}
+			});
+			btnUnosRezultata.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			btnUnosRezultata.setBounds(180, 339, 138, 21);
+		}
+		return btnUnosRezultata;
 	}
 }
