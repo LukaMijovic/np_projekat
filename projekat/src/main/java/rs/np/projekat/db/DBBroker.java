@@ -227,9 +227,9 @@ public class DBBroker {
 	 * @param kriterijum
 	 * @return rezultate utakmica kao lista utakmica.
 	 */
-	public List<Utakmica> vratiRezultate(HashMap<String, String> kriterijum) {
+	public List<Utakmica> vratiRezultate(HashMap<String, String> kriterijum, int id) {
 		
-		String query = "SELECT * FROM utakmica";
+		String query = "SELECT * FROM utakmica WHERE sudija = " + id;
 		
 //		
 //		if (kriterijum.get("idH") != null) {
@@ -501,6 +501,49 @@ public class DBBroker {
 			}
 		}
 		
+	}
+
+	/**
+	 * Vraca fudbalera sa zadatim imenom i prezimenom.
+	 * 
+	 * @param ime
+	 * @param prezime
+	 * @return
+	 */
+	public FudbalerDT vratiFudbalera(String ime, String prezime) {
+		String query = String.format("SELECT f.ime, f.prezime, f.brojNaDresu, p.naziv AS 'pozicija', d.naziv AS 'drzava', k.naziv AS 'klub'"
+				+ " FROM fudbaler f"
+				+ " LEFT JOIN pozicija p ON (f.pozicija = p.id)"
+				+ " LEFT JOIN drzava d ON (f.drzava = d.id)"
+				+ " LEFT JOIN klub k ON (f.klub = k.id)"
+				+ " WHERE f.ime = '%s' AND f.prezime = '%s'",
+					ime, prezime
+		);
+		
+		System.out.println(query);
+		
+		try {
+			Statement stat = conn.createStatement();
+			ResultSet rs = stat.executeQuery(query);
+			
+			if (rs != null) {
+				if (rs.next()) {
+					int brojNaDresu = rs.getInt("brojNaDresu");
+					String pozicija = rs.getString("pozicija");
+					String drzava = rs.getString("drzava");
+					String klub = rs.getString("klub");
+					
+					FudbalerDT f = new FudbalerDT(ime, prezime, brojNaDresu, pozicija, drzava, klub);
+					
+					return f;
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 	
 }

@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import rs.np.projekat.db.FudbalerDT;
+import rs.np.projekat.domen.Fudbaler;
 import rs.np.projekat.domen.Utakmica;
 import rs.np.projekat.kontroler.Kontroler;
 import rs.np.projekat.model.UtakmicaModelTable;
@@ -22,6 +24,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 /**
  * Main GUI stranica iz koje se pokrecu sve ostale sistemske operacije.
@@ -45,6 +48,9 @@ public class MainGui extends JFrame {
 	private JButton btnNoviFudbaler;
 	private JButton btnUnosRezultata;
 	private MainGui self = this;
+	private JTextField textFieldIme;
+	private JTextField textFieldPrezime;
+	private JButton btnPretrazi;
 	
 	/**
 	 * Launch the application.
@@ -67,7 +73,7 @@ public class MainGui extends JFrame {
 	 */
 	public MainGui() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 967, 553);
+		setBounds(100, 100, 575, 525);
 		setBounds(100, 100, 574, 407);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -78,6 +84,9 @@ public class MainGui extends JFrame {
 		contentPane.add(getTable());
 		contentPane.add(getBtnNoviFudbaler());
 		contentPane.add(getBtnUnosRezultata());
+		contentPane.add(getTextFieldIme());
+		contentPane.add(getTextFieldPrezime());
+		contentPane.add(getBtnPretrazi());
 		initTableUtakmice(null);
 	}
 	
@@ -133,5 +142,44 @@ public class MainGui extends JFrame {
 			btnUnosRezultata.setBounds(180, 339, 138, 21);
 		}
 		return btnUnosRezultata;
+	}
+	private JTextField getTextFieldIme() {
+		if (textFieldIme == null) {
+			textFieldIme = new JTextField();
+			textFieldIme.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			textFieldIme.setBounds(353, 246, 152, 25);
+			textFieldIme.setColumns(10);
+		}
+		return textFieldIme;
+	}
+	private JTextField getTextFieldPrezime() {
+		if (textFieldPrezime == null) {
+			textFieldPrezime = new JTextField();
+			textFieldPrezime.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			textFieldPrezime.setColumns(10);
+			textFieldPrezime.setBounds(353, 281, 152, 25);
+		}
+		return textFieldPrezime;
+	}
+	private JButton getBtnPretrazi() {
+		if (btnPretrazi == null) {
+			btnPretrazi = new JButton("Pretrazi");
+			btnPretrazi.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					String ime = textFieldIme.getText();
+					String prezime = textFieldPrezime.getText();
+					
+					FudbalerDT f = kontroler.getKontroler().vratiFudbalera(ime, prezime);
+					
+					FudbalerPrikaz gui = new FudbalerPrikaz(f);
+					gui.setVisible(true);
+					
+				}
+			});
+			btnPretrazi.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			btnPretrazi.setBounds(386, 316, 119, 21);
+		}
+		return btnPretrazi;
 	}
 }

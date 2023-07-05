@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import rs.np.projekat.db.DBBroker;
+import rs.np.projekat.db.FudbalerDT;
 import rs.np.projekat.domen.Drzava;
 import rs.np.projekat.domen.Fudbaler;
 import rs.np.projekat.domen.Klub;
@@ -155,7 +156,7 @@ public class Kontroler {
 		try {
 			this.db.uspostaviKonekciju();
 			
-			rezultati = db.vratiRezultate(kriterijum);
+			rezultati = db.vratiRezultate(kriterijum, ulogovaniSudija);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -292,5 +293,27 @@ public class Kontroler {
 		}
 		
 		return flag;
+	}
+
+	/**
+	 * Vraca fudbalera koji se poklapa sa zadatim kriterijumom.
+	 * 
+	 * @param ime
+	 * @param prezime
+	 * @return fudbaler koji se poklapa sa zadatim kriterijumom.
+	 */
+	public FudbalerDT vratiFudbalera(String ime, String prezime) {
+		// TODO Auto-generated method stub
+		try {
+			db.uspostaviKonekciju();
+			
+			return db.vratiFudbalera(ime, prezime);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 }
