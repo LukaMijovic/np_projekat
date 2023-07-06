@@ -20,7 +20,6 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JScrollPane;
 import java.awt.FlowLayout;
-import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
