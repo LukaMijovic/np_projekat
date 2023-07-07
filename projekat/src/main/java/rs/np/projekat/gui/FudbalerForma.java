@@ -125,10 +125,8 @@ public class FudbalerForma extends JFrame {
 		List<Drzava> drzave = kontroler.getKontroler().vratiDrzave();
 		model.setDrzave(drzave);
 		comboBoxDrzava.setModel(new DefaultComboBoxModel(drzave.toArray()));
-		
-		
-		
 	}
+	
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("Ime");

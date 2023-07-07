@@ -59,7 +59,9 @@ public class RegistracijaGui extends JFrame {
 //	}
 
 	/**
-	 * Create the frame.
+	 * Konstruktor za GUI za registraciju
+	 * 
+	 * @param gui roditelj GUI koji je inicijalizovao ovaj GUI.
 	 */
 	public RegistracijaGui(PrijavaGui gui) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -8,8 +8,6 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import org.junit.jupiter.engine.execution.InterceptingExecutableInvoker;
-
 import rs.np.projekat.db.FudbalerDT;
 import rs.np.projekat.kontroler.Kontroler;
 
@@ -20,6 +18,11 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * GUI koji sluzi za prikaz fudbalera.
+ * 
+ * @author mijov
+ */
 public class FudbalerPrikaz extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -56,7 +59,9 @@ public class FudbalerPrikaz extends JDialog {
 //	}
 
 	/**
-	 * Create the dialog.
+	 * Konstruktor za GUI.
+	 * 
+	 * @param fudbaler koji se prikazuje na GUI
 	 */
 	public FudbalerPrikaz(FudbalerDT fudbaler) {
 		setBounds(100, 100, 556, 430);

@@ -67,9 +67,7 @@ public class MainGui extends JFrame {
 //		});
 //	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public MainGui() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 575, 525);
@@ -92,7 +90,7 @@ public class MainGui extends JFrame {
 	/**
 	 * Ubacuje u tabelu sve utakmice koje zadovoljavaju dati kriterijum.
 	 * 
-	 * @param kriterijum
+	 * @param kriterijum po kom se vrsi pretraga
 	 */
 	public void initTableUtakmice(HashMap<String, String> kriterijum) {
 		

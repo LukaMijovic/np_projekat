@@ -53,7 +53,7 @@ public class DBBroker {
     /**
      * Vraca instancu DBBrokera.
      * 
-     * @return
+     * @return instanca
      */
     public static DBBroker getDBBroker() {
     	if (instanca == null) {
@@ -102,7 +102,7 @@ public class DBBroker {
     /**
      * Metoda salje bazi podatke sudije i pronalazi sudiju sa prosledjenim mejlom i sifrom kako bi sudija mogao da se prijavi na sistem.
      * 
-     * @param pomocni
+     * @param pomocni instanca Sudije.
      * @return sudiju koji ima prosledjen mejl i sifru ili null ako ga nije pronasao.
      */
     public Sudija prijavi(Sudija pomocni) {
@@ -144,7 +144,7 @@ public class DBBroker {
     /**
      * Vraca instancu konekcije.
      * 
-     * @return
+     * @return conn
      */
 	public Connection getConn() {
 		return conn;
@@ -153,8 +153,8 @@ public class DBBroker {
 	/**
 	 * Registruje novog sudiju.
 	 * 
-	 * @param sudija
-	 * @return
+	 * @param sudija sudija koji se registruje
+	 * @return true ako je registracija uspesna ili false ako nije
 	 */
 	public boolean registracija(Sudija sudija) {
 		boolean flag = false;
@@ -183,8 +183,8 @@ public class DBBroker {
 	/**
 	 * Vraca nazive timova na osnovu njihovih id.
 	 * 
-	 * @param idH
-	 * @param idA
+	 * @param idH id domacina
+	 * @param idA id gosta
 	 * @return niz naziva timova kao Stringove.
 	 */
 	public String[] vratiTimove(int idH, int idA) {
@@ -224,7 +224,8 @@ public class DBBroker {
 	/**
 	 * Vraca rezultate utakmica po zadatom kriterijumu.
 	 * 
-	 * @param kriterijum
+	 * @param kriterijum po kom se radi pretraga.
+	 * @param id sudije koji vrsi pretragu
 	 * @return rezultate utakmica kao lista utakmica.
 	 */
 	public List<Utakmica> vratiRezultate(HashMap<String, String> kriterijum, int id) {
@@ -383,7 +384,7 @@ public class DBBroker {
 	/**
 	 * Unosi fudbalera u bazu podataka.
 	 * 
-	 * @param fudbaler
+	 * @param fudbaler koji se unosi
 	 * @return true ako je uspesno fudbaler unet, false ako nije.
 	 */
 	public boolean unesiFudbalera(Fudbaler fudbaler) {
@@ -417,7 +418,7 @@ public class DBBroker {
 	/**
 	 * Unosi novu utakmicu u bazu podataka i azurira posledice te utakmice.
 	 * 
-	 * @param utakmica
+	 * @param utakmica koja se unosi
 	 * @return true ako je uspesno ubacivanje u bazu ili false ako nije.
 	 */
 	public boolean unesiUtakmicu(Utakmica utakmica) {
@@ -452,10 +453,10 @@ public class DBBroker {
 	/**
 	 * Azurira pobede, poraze ili neresene rezultate klubova koji su odigrali utakmicu.
 	 * 
-	 * @param idH
-	 * @param idA
-	 * @param golH
-	 * @param golA
+	 * @param idH id domacina
+	 * @param idA id gosta
+	 * @param golH broj golova domacina
+	 * @param golA broj golova gosta
 	 */
 	private void azurirajUspeh(int idH, int idA, int golH, int golA) {
 		// TODO Auto-generated method stub
@@ -506,9 +507,9 @@ public class DBBroker {
 	/**
 	 * Vraca fudbalera sa zadatim imenom i prezimenom.
 	 * 
-	 * @param ime
-	 * @param prezime
-	 * @return
+	 * @param ime fudbalera
+	 * @param prezime fudbalera
+	 * @return fudbalera koji ima zadato ime i prezime
 	 */
 	public FudbalerDT vratiFudbalera(String ime, String prezime) {
 		String query = String.format("SELECT f.ime, f.prezime, f.brojNaDresu, p.naziv AS 'pozicija', d.naziv AS 'drzava', k.naziv AS 'klub'"

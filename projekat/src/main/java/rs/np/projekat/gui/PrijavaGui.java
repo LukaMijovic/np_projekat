@@ -39,6 +39,10 @@ public class PrijavaGui extends JFrame {
 	 */
 	private Kontroler kontroler;
 	private JButton btnRegistarcija;
+	
+	/**
+	 * Instanca na samog sebe.
+	 */
 	private PrijavaGui self = this;
 
 	/**
@@ -176,7 +180,7 @@ public class PrijavaGui extends JFrame {
 	/**
 	 * Postavlja kontroler.
 	 * 
-	 * @param kontroler
+	 * @param kontroler instanca kontrolera koji se postavlja
 	 */
 	public void setKontroler(Kontroler kontroler) {
 		this.kontroler = kontroler;

@@ -33,6 +33,11 @@ public class Drzava {
 		super();
 	}
 
+	/**
+	 * Vraca id drzave
+	 * 
+	 * @return id
+	 */
 	public int getId() {
 		return id;
 	}
@@ -40,12 +45,17 @@ public class Drzava {
 	/**
 	 * Postavlja id drzave.
 	 * 
-	 * @param id
+	 * @param id drzave
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * Vraca naziv drzave
+	 * 
+	 * @return naziv
+	 */
 	public String getNaziv() {
 		return naziv;
 	}
@@ -53,7 +63,7 @@ public class Drzava {
 	/**
 	 * Postavlja naziv drzave.
 	 * 
-	 * @param naziv
+	 * @param naziv drzave koji se postavlja
 	 */
 	public void setNaziv(String naziv) {
 		this.naziv = naziv;

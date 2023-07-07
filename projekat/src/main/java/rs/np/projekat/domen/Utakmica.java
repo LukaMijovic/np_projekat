@@ -62,7 +62,7 @@ public class Utakmica {
 	/**
 	 * Postavlja id kluba domacina.
 	 * 
-	 * @param idH
+	 * @param idH id domacina
 	 * @throws IllegalArgumentException kada je id kluba negativan.
 	 */
 	public void setIdH(int idH) throws IllegalArgumentException {
@@ -85,7 +85,7 @@ public class Utakmica {
 	/**
 	 * Postavlja id id kluba gosta.
 	 * 
-	 * @param idA
+	 * @param idA id gosta
 	 * @throws IllegalArgumentException kada je id kluba negativan.
 	 */
 	public void setIdA(int idA) throws IllegalArgumentException {
@@ -108,7 +108,7 @@ public class Utakmica {
 	/**
 	 * Postavlja broj postignutih golova domacina.
 	 * 
-	 * @param golH
+	 * @param golH broj golova domacina
 	 * @throws IllegalArgumentException kada je broj golova negativan.
 	 */
 	public void setGolH(int golH) throws IllegalArgumentException {
@@ -131,7 +131,7 @@ public class Utakmica {
 	/**
 	 * Postavlja broj postignutih golova gosta.
 	 * 
-	 * @param golA
+	 * @param golA broj golova gosta
 	 * @throws IllegalArgumentException kada je broj golova negativan.
 	 */
 	public void setGolA(int golA) throws IllegalArgumentException {
@@ -140,28 +140,6 @@ public class Utakmica {
 		}
 		this.golA = golA;
 	}
-
-//	/**
-//	 * Vraca id stadiona na kom se igra utakmica
-//	 * 
-//	 * @return
-//	 */
-//	public int getStadion() {
-//		return stadion;
-//	}
-
-//	/**
-//	 * Postavlja id stadiona na kom se igra utakmica.
-//	 * 
-//	 * @param stadion
-//	 */
-//	public void setStadion(int stadion) throws IllegalArgumentException {
-//		if (stadion < 0) {
-//			throw new IllegalArgumentException("Id stadiona ne moze biti negativan.");
-//		}
-//		
-//		this.stadion = stadion;
-//	}
 
 	/**
 	 * Vraca id sudije koji je sudio utakmicu.
@@ -175,7 +153,7 @@ public class Utakmica {
 	/**
 	 * Postavlja id sudije koji sudi utakmicu.
 	 * 
-	 * @param sudija
+	 * @param sudija id sudije koji je vodio utakmicu
 	 */
 	public void setSudija(int sudija) throws IllegalArgumentException {
 		if (sudija < 0) {

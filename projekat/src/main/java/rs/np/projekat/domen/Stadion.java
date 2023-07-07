@@ -40,6 +40,11 @@ public class Stadion {
 		super();
 	}
 
+	/**
+	 * Vraca id stadiona
+	 * 
+	 * @return id
+	 */
 	public int getId() {
 		return id;
 	}
@@ -47,12 +52,17 @@ public class Stadion {
 	/**
 	 * Postavlja id stadiona.
 	 * 
-	 * @param id
+	 * @param id stadiona kao int
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * Vraca naziv stadiona
+	 * 
+	 * @return naziv
+	 */
 	public String getNaziv() {
 		return naziv;
 	}
@@ -60,12 +70,17 @@ public class Stadion {
 	/**
 	 * Postavlja naziv stadiona.
 	 * 
-	 * @param naziv
+	 * @param naziv stadiona kao String
 	 */
 	public void setNaziv(String naziv) {
 		this.naziv = naziv;
 	}
 
+	/**
+	 * Vraca kapacitet stadiona kao int
+	 * 
+	 * @return kapacitet
+	 */
 	public int getKapacitet() {
 		return kapacitet;
 	}
@@ -73,7 +88,7 @@ public class Stadion {
 	/**
 	 * Postavlja kapacitet stadiona.
 	 * 
-	 * @param kapacitet
+	 * @param kapacitet stadiona koji se postavlja
 	 * @throws IllegalArgumentException kada je kapacitet manji od 0.
 	 */
 	public void setKapacitet(int kapacitet) throws IllegalArgumentException {

@@ -54,7 +54,7 @@ public class Fudbaler {
 	/**
 	 * Postavlja id fudbalera.
 	 * 
-	 * @param id
+	 * @param id fudbalera 
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -72,7 +72,7 @@ public class Fudbaler {
 	/**
 	 * Postavlja ime fudbalera.
 	 * 
-	 * @param ime
+	 * @param ime fudbalera koje se postavlja
 	 * @throws IllegalArgumentException kada je ime null ili prazan string.
 	 */
 	public void setIme(String ime) throws IllegalArgumentException {
@@ -95,7 +95,7 @@ public class Fudbaler {
 	/**
 	 * Postavlja prezime fudbalera.
 	 * 
-	 * @param prezime
+	 * @param prezime fudbalera koje se postavlja
 	 * @throws IllegalArgumentException kada je prezime null ili prazan string.
 	 */
 	public void setPrezime(String prezime) throws IllegalArgumentException {
@@ -118,7 +118,7 @@ public class Fudbaler {
 	/**
 	 * Postavlja broj na dresu fudbalera.
 	 * 
-	 * @param brojNaDresu
+	 * @param brojNaDresu fudbalera koji se postavlja
 	 * @throws IllegalArgumentException kada je broj van okvira 1-99.
 	 */
 	public void setBrojNaDresu(int brojNaDresu) throws IllegalArgumentException {
@@ -141,7 +141,7 @@ public class Fudbaler {
 	/**
 	 * Postavlja id kluba u kom igra fudbaler.
 	 * 
-	 * @param klub
+	 * @param klub id kluba koji se dodeljuje fudbaleru
 	 * @throws IllegalArgumentException kada je id kluba negativan broj.
 	 */
 	public void setKlub(int klub) throws IllegalArgumentException {
@@ -164,7 +164,7 @@ public class Fudbaler {
 	/**
 	 * Postavlja id drzave iz koje je fudbaler.
 	 * 
-	 * @param drzava
+	 * @param drzava id drzave iz koje je fudbaler
 	 * @throws IllegalArgumentException kada je id drzave negativan broj.
 	 */
 	public void setDrzava(int drzava) throws IllegalArgumentException {
@@ -187,7 +187,7 @@ public class Fudbaler {
 	/**
 	 * Vraca id pozicije na kojoj igra igrac.
 	 * 
-	 * @param pozicija
+	 * @param pozicija id pozicije koju igra fudbaler
 	 * @throws IllegalArgumentException kada je id pozicije negativan broj.
 	 */
 	public void setPozicija(int pozicija) throws IllegalArgumentException {

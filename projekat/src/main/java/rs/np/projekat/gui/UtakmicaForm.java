@@ -62,7 +62,9 @@ public class UtakmicaForm extends JFrame {
 //	}
 
 	/**
-	 * Create the frame.
+	 * Konstruktor forme za unos nove utakmice
+	 * 
+	 * @param parent roditelj GUI koji je pozvao ovu formu
 	 */
 	public UtakmicaForm(MainGui parent) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

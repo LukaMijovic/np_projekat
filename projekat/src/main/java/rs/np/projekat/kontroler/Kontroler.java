@@ -62,9 +62,9 @@ public class Kontroler {
 	/**
 	 * Prijavljuje sudiju na sistem.
 	 * 
-	 * @param email
-	 * @param sifra
-	 * @return
+	 * @param email sudije koji se prijavljuje
+	 * @param sifra sudije koji se prijavljuje
+	 * @return sudija koji se prijavio
 	 */
 	public Sudija prijavi(String email, String sifra) {
 		//boolean flagUspeh = false;
@@ -98,7 +98,7 @@ public class Kontroler {
 	/**
 	 * Registruje novog sudiju.
 	 * 
-	 * @param sudija
+	 * @param sudija koji se registruje
 	 * @return true ako je uspesna registracija ili false ako je neuspesna.
 	 */
 	public boolean registracija(Sudija sudija) {
@@ -126,8 +126,8 @@ public class Kontroler {
 	/**
 	 * Vraca nazive timova na osnovu id.
 	 * 
-	 * @param idH
-	 * @param idA
+	 * @param idH id domacina
+	 * @param idA id gosta
 	 * @return nazive timova kao Stringove.
 	 */
 	public String[] vratiTimove(int idH, int idA) {
@@ -150,7 +150,7 @@ public class Kontroler {
 	/**
 	 * Vraca rezultate svih utakmica sa prosledjenim kriterijumom.
 	 * 
-	 * @param kriterijum
+	 * @param kriterijum po kom se vrsi pretraga
 	 * @return rezultati utakmica kao lista utakmica.
 	 */
 	public List<Utakmica> vratiRezultate(HashMap<String, String> kriterijum) {
@@ -243,7 +243,7 @@ public class Kontroler {
 	/**
 	 * Unosi novog fudbalera.
 	 * 
-	 * @param fudbaler
+	 * @param fudbaler koji se unosi u bazu
 	 * @return true ako je uspesno unet ili false ako nije.
 	 */
 	public boolean unesiFudbalera(Fudbaler fudbaler) {
@@ -264,7 +264,7 @@ public class Kontroler {
 	/**
 	 * Vraca id sudije koji je trenutno ulogovan.
 	 * 
-	 * @return
+	 * @return ulogovanSudija
 	 */
 	public int getUlogovaniSudija() {
 		return ulogovaniSudija;
@@ -273,7 +273,7 @@ public class Kontroler {
 	/**
 	 * Postavlja integer koji predstavlja ulogovnaog sudije.
 	 * 
-	 * @param ulogovaniSudija
+	 * @param ulogovaniSudija id sudije koji je trenutno ulogovan
 	 */
 	public void setUlogovaniSudija(int ulogovaniSudija) {
 		this.ulogovaniSudija = ulogovaniSudija;
@@ -282,7 +282,7 @@ public class Kontroler {
 	/**
 	 * Unosi prosledjenu utakmicu u bazu.
 	 * 
-	 * @param utakmica
+	 * @param utakmica koja se unosi u bazu
 	 * @return true ako je uspesno unosenje ili false ako nije.
 	 */
 	public boolean unesiUtakmicu(Utakmica utakmica) {
@@ -303,8 +303,8 @@ public class Kontroler {
 	/**
 	 * Vraca fudbalera koji se poklapa sa zadatim kriterijumom.
 	 * 
-	 * @param ime
-	 * @param prezime
+	 * @param ime fudbalera koji se pretrazuje
+	 * @param prezime fudbalera koji se pretrazuje
 	 * @return fudbaler koji se poklapa sa zadatim kriterijumom.
 	 */
 	public FudbalerDT vratiFudbalera(String ime, String prezime) {
@@ -335,7 +335,7 @@ public class Kontroler {
 	/**
 	 * Cuva fudbalera u json file.
 	 * 
-	 * @param fudbaler
+	 * @param fudbaler koji se cuva u file
 	 * @return true ako je uspesno cuvanje ili false ako nije.
 	 */
 	public boolean sacuvajUJSONFudbalera(FudbalerDT fudbaler) {

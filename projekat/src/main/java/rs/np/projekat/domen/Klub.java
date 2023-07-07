@@ -75,6 +75,11 @@ public class Klub {
 		super();
 	}
 
+	/**
+	 * Vraca id kluba
+	 * 
+	 * @return id
+	 */
 	public int getId() {
 		return id;
 	}
@@ -82,12 +87,17 @@ public class Klub {
 	/**
 	 * Postavlja id kluba.
 	 * 
-	 * @param id
+	 * @param id kluba
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * Vraca naziv kluba
+	 * 
+	 * @return naziv
+	 */
 	public String getNaziv() {
 		return naziv;
 	}
@@ -95,7 +105,7 @@ public class Klub {
 	/**
 	 * Postavlja naziv kluba.
 	 * 
-	 * @param naziv
+	 * @param naziv kluba koji se postavlja
 	 * @throws IllegalArgumentException kada je naziv kluba null ili prazan string.
 	 */
 	public void setNaziv(String naziv) throws IllegalArgumentException {
@@ -113,7 +123,7 @@ public class Klub {
 	/**
 	 * Postavlja broj pobeda.
 	 * 
-	 * @param brojW
+	 * @param brojW broj pobeda
 	 * @throws IllegalArgumentException kada je broj pobeda negativan.
 	 */
 	public void setBrojW(int brojW) throws IllegalArgumentException {
@@ -124,6 +134,11 @@ public class Klub {
 		this.brojW = brojW;
 	}
 
+	/**
+	 * Vraca broj poraza kluba
+	 * 
+	 * @return brojL
+	 */
 	public int getBrojL() {
 		return brojL;
 	}
@@ -131,7 +146,7 @@ public class Klub {
 	/**
 	 * Postavlja broj poraza.
 	 * 
-	 * @param brojL
+	 * @param brojL broj poraza kluba
 	 * @throws IllegalArgumentException kada je broj poraza negativan.
 	 */
 	public void setBrojL(int brojL) throws IllegalArgumentException {
@@ -149,7 +164,7 @@ public class Klub {
 	/**
 	 * Postavlja broj neresenih rezultata.
 	 * 
-	 * @param brojD
+	 * @param brojD broj neresnih rezultata kluba
 	 * @throws IllegalArgumentException kada je broj neresenih rezultata negativan.
 	 */
 	public void setBrojD(int brojD) throws IllegalArgumentException {
@@ -160,6 +175,11 @@ public class Klub {
 		this.brojD = brojD;
 	}
 
+	/**
+	 * Vraca id stadiona na kom klub igra.
+	 * 
+	 * @return stadion
+	 */
 	public int getStadion() {
 		return stadion;
 	}
@@ -167,7 +187,7 @@ public class Klub {
 	/**
 	 * Postavlja id stadiona na kom klub igra.
 	 * 
-	 * @param stadion
+	 * @param stadion id stadiona na kom klub igra.
 	 * @throws IllegalArgumentException kad je id kluba negativan.
 	 */
 	public void setStadion(int stadion) throws IllegalArgumentException {
@@ -178,6 +198,11 @@ public class Klub {
 		this.stadion = stadion;
 	}
 
+	/**
+	 * Vraca id trenera
+	 * 
+	 * @return trener
+	 */
 	public int getTrener() {
 		return trener;
 	}
@@ -186,7 +211,7 @@ public class Klub {
 	/**
 	 * Postavlja id trenera koji trenira klub.
 	 * 
-	 * @param trener
+	 * @param trener id trenera koji trenira klub
 	 * @throws IllegalArgumentException kada je id trenera negativan.
 	 */
 	public void setTrener(int trener) throws IllegalArgumentException {
@@ -204,7 +229,7 @@ public class Klub {
 	/**
 	 * Id drzave iz koje je klub.
 	 * 
-	 * @param drzava
+	 * @param drzava id drzave iz koje je klub.
 	 * @throws IllegalArgumentException kada je id drzave negativan.
 	 */
 	public void setDrzava(int drzava) throws IllegalArgumentException {

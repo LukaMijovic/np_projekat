@@ -53,6 +53,11 @@ public class Sudija {
 		super();
 	}
 
+	/**
+	 * Vraca ime sudije
+	 * 
+	 * @return ime
+	 */
 	public String getIme() {
 		return ime;
 	}
@@ -60,7 +65,7 @@ public class Sudija {
 	/**
 	 * Postavlja ime sudije. Ime ne sme biti NULL ili 0 karaktera.
 	 * 
-	 * @param ime
+	 * @param ime sudije koje se postvalja
 	 * @throws IllegalArgumentException kada je ime 0 karaktera ili NULL.
 	 */
 	public void setIme(String ime) throws IllegalArgumentException {
@@ -71,6 +76,11 @@ public class Sudija {
 		this.ime = ime;
 	}
 
+	/**
+	 * Vraca prezime sudije
+	 * 
+	 * @return prezime
+	 */
 	public String getPrezime() {
 		return prezime;
 	}
@@ -78,7 +88,7 @@ public class Sudija {
 	/**
 	 * Postavlja prezime sudije. Prezime ne sme biti NULL ili 0 karaktera.
 	 * 
-	 * @param prezime
+	 * @param prezime sudije koje se postavlja
 	 * @throws IllegalArgumentException kada je prezime 0 karaktera ili NULL.
 	 */
 	public void setPrezime(String prezime) throws IllegalArgumentException {
@@ -89,6 +99,11 @@ public class Sudija {
 		this.prezime = prezime;
 	}
 
+	/**
+	 * Vraca email sudije
+	 * 
+	 * @return email
+	 */
 	public String getEmail() {
 		return email;
 	}
@@ -96,7 +111,7 @@ public class Sudija {
 	/**
 	 * Postavlja mejl sudije.
 	 * 
-	 * @param email
+	 * @param email sudije koji se postavlja
 	 * @throws IllegalArgumentException kada mejl nije adekvatnog formata.
 	 */
 	public void setEmail(String email) throws IllegalArgumentException {
@@ -107,6 +122,11 @@ public class Sudija {
 		this.email = email;
 	}
 
+	/**
+	 * Vraca sifru sudije
+	 * 
+	 * @return sifra
+	 */
 	public String getSifra() {
 		return sifra;
 	}
@@ -114,7 +134,7 @@ public class Sudija {
 	/**
 	 * Postavlja sifru sudije. Sifra mora biti najmanje 5 karaktera.
 	 * 
-	 * @param sifra
+	 * @param sifra koja se postavlja
 	 * @throws IllegalArgumentException kada je sifra manja od 5 karaktera.
 	 */
 	public void setSifra(String sifra) throws IllegalArgumentException {
@@ -165,7 +185,7 @@ public class Sudija {
 	/**
 	 * Postavlja id sudije.
 	 * 
-	 * @param id
+	 * @param id koji se postavlja
 	 */
 	public void setId(int id) {
 		this.id = id;

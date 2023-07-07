@@ -90,6 +90,12 @@ public class Trener {
 		return true;
 	}
 
+	
+	/**
+	 * Vraca id trenera kao int
+	 * 
+	 * @return id
+	 */
 	public int getId() {
 		return id;
 	}
@@ -97,12 +103,17 @@ public class Trener {
 	/**
 	 * Postavlja id Trenera.
 	 * 
-	 * @param id
+	 * @param id koji se postavlja
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * Vraca ime trenera
+	 * 
+	 * @return ime
+	 */
 	public String getIme() {
 		return ime;
 	}
@@ -110,12 +121,17 @@ public class Trener {
 	/**
 	 * Postavlja ime Trenera kao string.
 	 * 
-	 * @param ime
+	 * @param ime trenera koje se postavlja
 	 */
 	public void setIme(String ime) {
 		this.ime = ime;
 	}
 
+	/**
+	 * Vraca prezime trenera.
+	 * 
+	 * @return prezime
+	 */
 	public String getPrezime() {
 		return prezime;
 	}
@@ -123,12 +139,17 @@ public class Trener {
 	/**
 	 * Postavlja prezime Trenera kao string.
 	 * 
-	 * @param prezime
+	 * @param prezime koje se postavlja
 	 */
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
 	}
 
+	/**
+	 * Vraca id kluba koji trener trenira
+	 * 
+	 * @return klub
+	 */
 	public int getKlub() {
 		return klub;
 	}
@@ -136,7 +157,7 @@ public class Trener {
 	/**
 	 * Postavlja id kluba u kom se nalazi Trener.
 	 * 
-	 * @param klub
+	 * @param klub id kluba koji trener trenira
 	 * @throws IllegalArgumentException kada se prosledi id kluba manji od 0.
 	 */
 	public void setKlub(int klub) throws IllegalArgumentException {
@@ -154,7 +175,7 @@ public class Trener {
 	/**
 	 * Postavja id drzave iz koje je Trener.
 	 * 
-	 * @param drzava
+	 * @param drzava id drzave iz koje je trener
 	 * @throws IllegalArgumentException kada se prosledi id drzave manji od 0.
 	 */
 	public void setDrzava(int drzava) throws IllegalArgumentException {

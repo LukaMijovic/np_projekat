@@ -33,6 +33,11 @@ public class Pozicija {
 		this.naziv = naziv;
 	}
 
+	/**
+	 * Vraca id pozicije
+	 * 
+	 * @return id
+	 */
 	public int getId() {
 		return id;
 	}
@@ -40,12 +45,17 @@ public class Pozicija {
 	/**
 	 * Postavlja id pozicije.
 	 * 
-	 * @param id
+	 * @param id pozicije
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * Vraca naziv pozicije
+	 * 
+	 * @return naziv
+	 */
 	public String getNaziv() {
 		return naziv;
 	}
@@ -53,7 +63,7 @@ public class Pozicija {
 	/**
 	 * Postavlja naziv pozicije.
 	 * 
-	 * @param naziv
+	 * @param naziv pozicije
 	 */
 	public void setNaziv(String naziv) {
 		this.naziv = naziv;
