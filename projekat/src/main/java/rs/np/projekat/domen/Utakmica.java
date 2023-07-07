@@ -9,7 +9,6 @@ package rs.np.projekat.domen;
  *		<li>idA: Integer</li>
  *		<li>golH: Integer</li>
  *		<li>golA: Integer</li>
- *		<li>stadion: Integer</li>
  *		<li>sudija: Integer</li>
  * 	</ul>
  * 
