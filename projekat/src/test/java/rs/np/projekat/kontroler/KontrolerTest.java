@@ -179,5 +179,12 @@ class KontrolerTest {
 		
 		assertEquals(f.getBrojNaDresu(), f2.getBrojNaDresu());
 	}
+	
+	@Test
+	void testSacuvajUJSONFudbalera() {
+		FudbalerDT f = new FudbalerDT("Test", "Testic", 10, "ST", "Srbija", "FK Partizan");
+		
+		assertEquals(true, k.sacuvajUJSONFudbalera(f));
+	}
 
 }

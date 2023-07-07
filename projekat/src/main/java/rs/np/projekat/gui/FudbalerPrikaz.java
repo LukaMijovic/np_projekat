@@ -8,8 +8,14 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import org.junit.jupiter.engine.execution.InterceptingExecutableInvoker;
+
 import rs.np.projekat.db.FudbalerDT;
+import rs.np.projekat.kontroler.Kontroler;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -22,12 +28,19 @@ public class FudbalerPrikaz extends JDialog {
 	 * Fudbaler kog prikazuje GUI.
 	 */
 	private FudbalerDT fudbaler;
+	
+	/**
+	 * Instanca kontrolera za komunikaciju sa DBBrokerom.
+	 */
+	private Kontroler kontroler;
+	
 	private JLabel lblIme;
 	private JLabel lblPrezime;
 	private JLabel lblBrojNaDresu;
 	private JLabel lblPozicija;
 	private JLabel lblDrzava;
 	private JLabel lblKlub;
+	private JButton btnSacuvajUJson;
 	
 	/**
 	 * Launch the application.
@@ -49,7 +62,7 @@ public class FudbalerPrikaz extends JDialog {
 		setBounds(100, 100, 556, 430);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		
+		kontroler = Kontroler.getKontroler();
 		this.fudbaler = fudbaler;
 		
 		
@@ -73,6 +86,7 @@ public class FudbalerPrikaz extends JDialog {
 						dispose();
 					}
 				});
+				buttonPane.add(getBtnSacuvajUJson());
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -144,5 +158,23 @@ public class FudbalerPrikaz extends JDialog {
 			lblKlub.setBounds(10, 289, 522, 28);
 		}
 		return lblKlub;
+	}
+	private JButton getBtnSacuvajUJson() {
+		if (btnSacuvajUJson == null) {
+			btnSacuvajUJson = new JButton("Sacuvaj u JSON");
+			btnSacuvajUJson.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					boolean flag = kontroler.sacuvajUJSONFudbalera(fudbaler);
+					
+					if (flag) {
+						JOptionPane.showMessageDialog(rootPane, "Uspesno cuvanje u JSON format.");
+					} else {
+						JOptionPane.showMessageDialog(rootPane, "Nije uspelo cuvanje. Probajte ponovo.");
+					}
+				}
+			});
+			btnSacuvajUJson.setActionCommand("OK");
+		}
+		return btnSacuvajUJson;
 	}
 }

@@ -1,10 +1,15 @@
 package rs.np.projekat.kontroler;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import rs.np.projekat.db.DBBroker;
 import rs.np.projekat.db.FudbalerDT;
@@ -325,5 +330,29 @@ public class Kontroler {
 	 */
 	public DBBroker getDb() {
 		return db;
+	}
+
+	/**
+	 * Cuva fudbalera u json file.
+	 * 
+	 * @param fudbaler
+	 * @return true ako je uspesno cuvanje ili false ako nije.
+	 */
+	public boolean sacuvajUJSONFudbalera(FudbalerDT fudbaler) {
+		boolean flag = false;
+		
+		Gson gson = new GsonBuilder().create();
+		
+		try(FileWriter fw = new FileWriter(String.format("fudbaler_'%s'_'%s'", fudbaler.getIme(), fudbaler.getPrezime()))){
+			
+			fw.write(gson.toJson(fudbaler));
+			flag = true;
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return flag;
 	}
 }
