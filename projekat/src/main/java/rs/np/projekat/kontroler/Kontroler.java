@@ -38,7 +38,7 @@ public class Kontroler {
 	private DBBroker db;
 	
 	private Kontroler() {
-		
+		this.db = DBBroker.getDBBroker();
 	}
 	
 	/**
@@ -315,5 +315,15 @@ public class Kontroler {
 		}
 		
 		return null;
+	}
+
+	
+	/**
+	 * Vraca instancu DBBrokera.
+	 * 
+	 * @return db
+	 */
+	public DBBroker getDb() {
+		return db;
 	}
 }
